@@ -1,12 +1,10 @@
 #!/bin/bash
 
-if [ -z "$(ls /etc/apt)" ]; then
+if [ -z "$(ls /etc/apt 2>/dev/null)" ]; then
     LINUX_DISTRO="centos"
 else
     LINUX_DISTRO="ubuntu"
 fi
-
-echo "$LINUX_DISTRO"
 
 function terraform_installation
 {
