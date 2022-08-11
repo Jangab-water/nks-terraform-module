@@ -1,9 +1,9 @@
 #!/bin/bash
 
 if [ -z "$(ls /etc/apt)" ]; then
-    LINUX_DISTRO="ubuntu"
-else
     LINUX_DISTRO="centos"
+else
+    LINUX_DISTRO="ubuntu"
 fi
 
 echo "$LINUX_DISTRO"
