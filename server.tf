@@ -16,6 +16,24 @@ resource "ncloud_access_control_group_rule" "full-access" {
     port_range = "1-65535"
     description = "FullAccess"
   }
+  outbound {
+    protocol = "TCP"
+    ip_block = "0.0.0.0/0"
+    port_range = "1-65535"
+    description = "FullAccess"
+  }
+  outbound {
+    protocol = "UDP"
+    ip_block = "0.0.0.0/0"
+    port_range = "1-65535"
+    description = "FullAccess"
+  }
+  outbound {
+    protocol = "ICMP"
+    ip_block = "0.0.0.0/0"
+    port_range = "1-65535"
+    description = "FullAccess"
+  }
 }
 
 resource "ncloud_network_interface" "server_nic_default" {

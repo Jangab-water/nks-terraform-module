@@ -4,12 +4,12 @@ LINUX_DISTRO=$(cat /etc/os-release | grep "ID" | head -1 | tr -d "ID=")
 
 function terraform_installation
 {
-    if [ "$LINUX_DISTRO" == "ubuntu" ]; then
+    if [ $LINUX_DISTRO == '\"ubuntu\"' ]; then
         wget -O- https://apt.releases.hashicorp.com/gpg | gpg --dearmor | sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg
         echo 'deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main' | sudo tee /etc/apt/sources.list.d/hashicorp.list
         sudo apt-get update
         sudo apt-get install -y jq terraform
-    elif [ "$LINUX_DISTRO" == "centos" ]; then
+    elif [ $LINUX_DISTRO == '\"centos\"' ]; then
         sudo yum install -y yum-utils
         sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo
         sudo yum install -y terraform
@@ -18,10 +18,10 @@ function terraform_installation
 
 function jq_installation
 {
-    if [ "$LINUX_DISTRO" == "ubuntu" ]; then
+    if [ $LINUX_DISTRO == '\"ubuntu\"' ]; then
         sudo apt-get update
         sudo apt-get install -y jq
-    elif [ "$LINUX_DISTRO" == "centos" ]; then
+    elif [ $LINUX_DISTRO == '\"centos\"' ]; then
         sudo yum install -y yum-utils
         sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo
         sudo yum install -y terraform
@@ -50,6 +50,8 @@ function how_to_use
     echo "  iam                    install ncp-iam-authenticator"
     echo "  init, i                apply this template"
     echo ""
+    echo "NOTICE::"
+    echo "  Please get README.md before you launch."
 }
 
 case "$1" in 
