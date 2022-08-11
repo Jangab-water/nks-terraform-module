@@ -7,7 +7,7 @@ node_spec = [ "C002.M008", "C004.M016" ] # STAND
 
 ##### Individual Settings #####
 ### Resource name prefix
-root_name = "ts-rjh"
+root_name = "newroot"
 
 
 ### Node spec indicator.
