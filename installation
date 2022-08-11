@@ -28,7 +28,7 @@ function jq_installation
         sudo apt-get install -y jq
     elif [ "$LINUX_DISTRO" == "centos" ]; then
         sudo yum update -y
-        sudo yum install -y yum-utils
+        sudo yum install -y epel-release
         sudo yum install -y jq
     fi    
 }
@@ -38,13 +38,17 @@ function ncp_iam_authenticator_installation
     curl -o ncp-iam-authenticator https://kr.object.ncloudstorage.com/nks-download/ncp-iam-authenticator/v1.0.5/linux/amd64/ncp-iam-authenticator
     chmod +x ncp-iam-authenticator
     sudo mkdir -p /usr/local/bin
-    usdo mv ncp-iam-authenticator /usr/local/bin
+    sudo mv ncp-iam-authenticator /usr/local/bin
 }
 
 function launch_terraform
 {
     terraform init
     terraform apply -auto-approve
+    CLUSTER_UUID=$(cat terraform.tfstate|jq .outputs.cluster_uuid.value -r)
+    ncp-iam-authenticator create-kubeconfig --clusterUuid $CLUSTER_UUID --region KR
+    mkdir -p ~/.kube
+    mv kubeconfig-$CLUSTER_UUID.yaml ~/.kube/config
 }
 
 function how_to_use
