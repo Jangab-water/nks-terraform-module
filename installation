@@ -14,6 +14,7 @@ function terraform_installation
         sudo apt-get update
         sudo apt-get install -y jq terraform
     elif [ "$LINUX_DISTRO" == "centos" ]; then
+        sudo yum update -y
         sudo yum install -y yum-utils
         sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo
         sudo yum install -y terraform
@@ -26,9 +27,9 @@ function jq_installation
         sudo apt-get update
         sudo apt-get install -y jq
     elif [ "$LINUX_DISTRO" == "centos" ]; then
+        sudo yum update -y
         sudo yum install -y yum-utils
-        sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo
-        sudo yum install -y terraform
+        sudo yum install -y jq
     fi    
 }
 
