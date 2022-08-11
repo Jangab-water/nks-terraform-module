@@ -42,7 +42,7 @@ resource "ncloud_nat_gateway" "nat" {
   zone = "KR-2"
 }
 
-resource "ncloud_route" "nat-rt-table" {
+resource "ncloud_route" "nat_rt_table" {
   route_table_no = ncloud_vpc.vpc.default_private_route_table_no
   destination_cidr_block = "0.0.0.0/0"
   target_type = "NATGW"
